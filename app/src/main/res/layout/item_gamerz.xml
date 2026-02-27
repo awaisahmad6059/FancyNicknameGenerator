@@ -15,7 +15,7 @@
         android:background="#2E3B8C"
         android:gravity="center"
         android:text="Liam"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
 

@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +26,6 @@ class SavedActivity : AppCompatActivity() {
         list = loadNames().toMutableList()
         adapter = SavedAdapter(list,
             onCopy = { copyText(it) },
-            onShare = { shareText(it) },
             onDelete = { deleteName(it) })
 
         recycler.adapter = adapter
@@ -42,9 +42,19 @@ class SavedActivity : AppCompatActivity() {
     }
 
     private fun deleteName(name: String) {
-        list.remove(name)
-        saveAll()
-        adapter.notifyDataSetChanged()
+        AlertDialog.Builder(this)
+            .setTitle("Delete")
+            .setMessage("Are you sure you want to delete this nickname?")
+            .setPositiveButton("Yes") { dialog, _ ->
+                list.remove(name)
+                saveAll()
+                adapter.notifyDataSetChanged()
+                dialog.dismiss()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun copyText(text: String) {
@@ -53,10 +63,4 @@ class SavedActivity : AppCompatActivity() {
         Toast.makeText(this, "Copied", Toast.LENGTH_SHORT).show()
     }
 
-    private fun shareText(text: String) {
-        val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "text/plain"
-        intent.putExtra(Intent.EXTRA_TEXT, text)
-        startActivity(Intent.createChooser(intent, "Share via"))
-    }
 }

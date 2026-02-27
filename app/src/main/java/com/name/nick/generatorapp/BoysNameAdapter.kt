@@ -32,10 +32,7 @@ class BoysNameAdapter(
         holder.tvName.text = name
 
 
-        // Optional: highlight selected item when clicked
-        holder.tvName.setBackgroundColor(0xFFFFFFFF.toInt()) // white by default
 
-        // Handle Select button click
         holder.btnSelect.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, GenerateNameActivity::class.java)

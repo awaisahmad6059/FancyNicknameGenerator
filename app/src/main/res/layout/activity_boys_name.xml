@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F7FA">
+    android:background="@drawable/bg">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Boys Name"
-            android:textColor="#2E5CB8"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>

@@ -27,8 +27,6 @@ class GamerzAdapter(
         val name = items[position]
         holder.tvName.text = name
 
-        // Optional: highlight selected item when clicked
-        holder.tvName.setBackgroundColor(0xFFFFFFFF.toInt()) // white by default
 
         // Handle Select button click
         holder.btnSelect.setOnClickListener {
